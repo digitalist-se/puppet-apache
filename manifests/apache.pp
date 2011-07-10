@@ -1,5 +1,4 @@
 class apache (
-  $module_root = '/tmp/vagrant-puppet/manifests/modules/apache',
   $packages = [
     'apache2'
   ],
@@ -41,7 +40,7 @@ class apache (
       owner  => root,
       group  => root,
       mode   => 0444,
-      source => "${module_root}/files/${name}",
+      source => "puppet:///modules/apache/${name}",
     }
   }
 
