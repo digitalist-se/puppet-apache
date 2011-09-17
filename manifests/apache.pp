@@ -1,10 +1,10 @@
 class apache (
-  $packages = [
-    'apache2'
-  ],
+  # Some useful modules.
   $modules = [
     'rewrite'
   ],
+  # A set of common configuration files. These files can be replaced
+  # by removing them from this array.
   $conf_files = [
     'apache2.conf',
     'conf.d/charset', 
@@ -17,6 +17,7 @@ class apache (
     'ports.conf'
   ]
 ) {
+  $packages = ["apache2"]
   package { $packages:
     ensure => installed,
   }
@@ -27,27 +28,11 @@ class apache (
     require => Package['apache2'],
   }
 
-  conf_file { $conf_files:
+  apache::conf_file { $conf_files:
     require => Package['apache2'],
   }
 
-  module { $modules:
+  apache::module { $modules:
     require => Package['apache2'],
   }
-
-  define conf_file() {
-    file { "/etc/apache2/${name}":
-      owner  => root,
-      group  => root,
-      mode   => 0444,
-      source => "puppet:///modules/apache/${name}",
-    }
-  }
-
-  define module() {
-    exec { "a2enmod ${name}":
-      command => "/usr/sbin/a2enmod ${name}",
-      notify => Service['apache2'],
-    }
-  } 
 }
