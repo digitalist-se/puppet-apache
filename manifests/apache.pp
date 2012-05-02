@@ -7,7 +7,7 @@ class apache (
   # by removing them from this array.
   $conf_files = [
     'apache2.conf',
-    'conf.d/charset', 
+    'conf.d/charset',
     'conf.d/default',
     'conf.d/log',
     'conf.d/security',
@@ -17,7 +17,8 @@ class apache (
     'ports.conf'
   ]
 ) {
-  $packages = ["apache2"]
+  $packages = ['apache2', 'apache2-prefork-dev']
+
   package { $packages:
     ensure => installed,
   }
