@@ -17,7 +17,7 @@ class apache (
     'ports.conf'
   ]
 ) {
-  $packages = ['apache2', 'apache2-prefork-dev']
+  $packages = ['apache2', 'apache2-mpm-prefork']
 
   package { $packages:
     ensure => installed,
