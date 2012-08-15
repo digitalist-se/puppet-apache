@@ -17,10 +17,16 @@ class apache (
     'ports.conf'
   ]
 ) {
-  $packages = ['apache2', 'apache2-mpm-prefork']
+  # $packages = ['apache2', 'apache2-mpm-prefork']
 
-  package { $packages:
+  package { 'apache2':
     ensure => installed,
+    require => File['/etc/apache2/conf.d/aegir.conf'],
+  }
+
+  package { 'apache2-mpm-prefork':
+    ensure => installed,
+    require => Package['apache2'],
   }
 
   service { apache2:
