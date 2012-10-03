@@ -21,7 +21,6 @@ class apache (
 
   package { 'apache2':
     ensure => installed,
-    require => File['/etc/apache2/conf.d/aegir.conf'],
   }
 
   package { 'apache2-mpm-prefork':
