@@ -41,4 +41,5 @@ class apache (
   apache::module { $modules:
     require => Package['apache2'],
   }
+  Package { require => Exec['apt-get update'] }
 }
