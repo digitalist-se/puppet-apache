@@ -17,7 +17,6 @@ class apache (
     'ports.conf'
   ]
 ) {
-  # $packages = ['apache2', 'apache2-mpm-prefork']
 
   package { 'apache2':
     ensure => installed,
