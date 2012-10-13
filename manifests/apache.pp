@@ -1,5 +1,5 @@
 class apache (
-  # Some useful modules.
+  # A list of modules to have enabled.
   $modules = [
     'rewrite'
   ],
