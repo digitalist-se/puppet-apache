@@ -14,8 +14,10 @@ class apache (
     'conf.d/ssl',
     'conf.d/tweaks',
     'httpd.conf',
-    'ports.conf'
-  ]
+  ],
+  # Ports
+  $port = 80,
+  $port_ssl = 443
 ) {
 
   package { 'apache2':
@@ -36,9 +38,19 @@ class apache (
   apache::conf_file { $conf_files:
     require => Package['apache2'],
   }
+  file { "/etc/apache2/sites-enabled/000-default":
+    ensure => absent,
+  }
+  file { "/etc/apache2/ports.conf":
+    owner  => root,
+    group  => root,
+    mode   => 0444,
+    content => template("apache/ports.conf.erb"),
+  }
 
   apache::module { $modules:
     require => Package['apache2'],
   }
+  # Make sure apt-get has run.
   Package { require => Exec['apt-get update'] }
 }
