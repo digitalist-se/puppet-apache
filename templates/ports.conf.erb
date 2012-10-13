@@ -1,0 +1,6 @@
+NameVirtualHost *:<%= @port %>
+Listen <%= @port %>
+
+<IfModule mod_ssl.c>
+  Listen <%= @port_ssl %>
+</IfModule>
