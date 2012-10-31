@@ -28,6 +28,3 @@ MaxSpareServers 25
 
 # Number of requests that an individual child server process will handle.
 MaxRequestsPerChild 50
-
-# Maximum amount of memory in KB that the Apache may use before freeing memory.
-MaxMemFree 2097152
