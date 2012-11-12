@@ -41,6 +41,16 @@ class apache (
   file { "/etc/apache2/sites-enabled/000-default":
     ensure => absent,
   }
+
+  file { "/etc/apache2/sites-enabled/monitcheck.vhost":
+    owner => root,
+    group => root,
+    mode  => 0444,
+    source => 'puppet:///modules/apache/monitcheck.vhost',
+    require => Package['apache2'],
+    notify  => Service['apache2']
+  }
+
   file { "/etc/apache2/ports.conf":
     owner  => root,
     group  => root,
