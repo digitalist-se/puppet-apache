@@ -56,6 +56,7 @@ class apache (
     group  => root,
     mode   => 0444,
     content => template("apache/ports.conf.erb"),
+    notify => Service['apache2']
   }
 
   apache::module { $modules:

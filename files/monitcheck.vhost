@@ -1,4 +1,5 @@
-<VirtualHost 127.0.0.1:8081>
+<VirtualHost 127.0.0.1:50080>
+        ServerName localhost:50080
         ServerAdmin webmaster@localhost
 
         DocumentRoot /var/www
