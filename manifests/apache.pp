@@ -1,7 +1,8 @@
 class apache (
   # A list of modules to have enabled.
   $modules = [
-    'rewrite'
+    'rewrite',
+    'headers',
   ],
   # A set of common configuration files. These files can be replaced
   # by removing them from this array.
@@ -13,6 +14,7 @@ class apache (
     'conf.d/security',
     'conf.d/ssl',
     'conf.d/tweaks',
+    'conf.d/headers',
     'httpd.conf',
   ],
   # Ports
