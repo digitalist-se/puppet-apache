@@ -12,10 +12,10 @@ KeepAliveTimeout 2
 MaxKeepAliveRequests 100
 
 # Maximum value of MaxClients. If changed, Apache need to be restarted.
-ServerLimit 64
+ServerLimit 48
 
 # Maximum number of child processes that will be launched to serve requests.
-MaxClients 64
+MaxClients 48
 
 # Number of child server processes created on startup.
 StartServers 20
